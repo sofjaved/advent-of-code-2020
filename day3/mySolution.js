@@ -13,7 +13,7 @@ function tobaggan(array) {
     let nextRow = array[i + 1]; //this is a string
     ptr += 3;
     if(ptr >= rowLength) {
-      ptr = 0 + (ptr - rowLength);
+      ptr -= rowLength;
     }
     pos = nextRow[ptr];
     if(pos === '#') {
