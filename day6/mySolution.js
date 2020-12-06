@@ -21,8 +21,9 @@ function findGroupYesCount(array) {
   for (let i = 0; i < array.length; i++) {
     let person = array[i];
     for(let j = 0; j < person.length; j++) {
-      if (!set.has(person[j])) {
-        set.add(person[j]);
+      let question = person[j];
+      if (!set.has(question)) {
+        set.add(question);
       }
     }
   }
@@ -48,10 +49,11 @@ function findGroupYesCount2(array) {
   for (let i = 0; i < array.length; i++) {
     let person = array[i];
     for(let j = 0; j < person.length; j++) {
-      if (!memo[person[j]]) {
-        memo[person[j]] = 1
+      let question = person[j];
+      if (!memo[question]) {
+        memo[question] = 1
       } else {
-        memo[person[j]]++;
+        memo[question]++;
       }
     }
   }
