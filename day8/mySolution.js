@@ -43,13 +43,33 @@ console.log(game(inputArray)) // 1654
 
 //part 2
 
-function swap() {
-
+function swap(array) {
+  for(let i = 0; i < array.length; i++) {
+    let move = array[i][0];
+    // let val = array[i][1];
+    if(move === 'nop') {
+        move = 'jmp';
+        if(typeof game2(array) === 'number') {
+          return game2(array);
+        } else {
+          move = 'nop';
+        }
+    if(move === 'jmp') {
+      move = 'nop';
+      if(typeof game2(array) === 'number') {
+        return game2(array);
+      } else {
+        move = 'jmp';
+      }
+    }
+    }
+  }
 }
 
 
+
 //helper function to simulate game play
-function game(array) {
+function game2(array) {
   let accValue = 0;
   let currentIdx = 0;
   let move;
@@ -84,6 +104,8 @@ function game(array) {
 let testArray2 = [['nop','+0'],['acc','+1'],['jmp','+4'],['acc','+3'],['jmp','-3'],['acc','-99'],['acc','+1'],['nop','-4'],['acc','+6']];
 
 console.log(game2(testArray2)) // 8
+// console.log(swap(testArray)) //
 
+// console.log(swap(inputArray))
 
 // console.log(inputArray.length)

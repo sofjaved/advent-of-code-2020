@@ -78,6 +78,34 @@ console.log(allContainers(testObj, 'shiny gold')) //4
 
 //part 2
 
+// const countTree = (tree, current) => {
+//   const children = tree[current]
+//   return children.reduce((count, child) => {
+//     return count + child.num + child.num * countTree(tree, child.color)
+//   }, 0)
+// }
+
+function countBags(obj, container) {
+  let count = 0;
+  const innerBags = obj[container]
+  console.log('innerBags: ', innerBags)
+
+}
+
+console.log(countBags(rulesObj, 'shiny gold'))
+
+  //   for(let i = 0; i < innerBags.length; i++) {
+  //     if(innerBags === 'no other bags') {
+  //       continue;
+  //     } else {
+  //       let num = Number(innerBags[i]);
+  //       let color = innerBags[i].slice(2);
+  //       count += num + (num * countBags(obj, color));
+  //     }
+  //   }
+  //   return count;
+  // }
+
 
 
 
@@ -86,8 +114,18 @@ let testObj2 = {
 'faded blue' : ['no other bags'],
 'dotted black' : ['no other bags'],
 'vibrant plum' : ['5 faded blue', '6 dotted black'],
-'dark olive': ['3 faded blue bags', '4 dotted black']
+'dark olive': ['3 faded blue', '4 dotted black']
 }
 
 
-console.log(numContainees(testObj2, 'shiny gold'))
+// console.log(countBags(testObj2, 'shiny gold')) //should = 32
+
+// if(innerBags !== 'no other bags') {
+//   return innerBags.reduce((count, bag) => {
+//     let num = Number(bag[0]);
+//     let color = bag.slice(2);
+//     return count + num + (num * countBags(obj, color));
+//   }, 0)
+// } else {
+//   return 0;
+// }
