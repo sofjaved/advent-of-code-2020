@@ -41,4 +41,43 @@ let testArray = [35,20,15,25,47,40,62,55,65,95,102,117,150,182,127,219,299,277,3
 
 // console.log(findError(testArray, 5)) // 127
 
-// console.log(pairSum([15,20,25,35,37], 40)) // true
+//part 2
+
+function findWeakness(array, target) {
+  let left = 0;
+  let right = 1
+  let count = 1;
+  let maxCount = 1;
+  let contArray;
+  let currSum = array[left];
+  while(right < array.length) {
+    currSum += array[right];
+    if(currSum < target) {
+      count++
+      right++;
+    }
+    if(currSum > target) {
+      currSum -= array[left];
+      left++;
+    }
+    if(currSum === target) {
+      if(count > maxCount) {
+        maxCount = count;
+        contArray = array.slice(array[left], array[right + 1]);
+      } else {
+        currSum -= array[left];
+        left++
+      }
+    }
+  }
+ return Math.min(...contArray) + Math.max(...contArray);
+}
+
+
+function arraySum(array) {
+  return array.reduce((sum, curr) => {
+    return sum + curr;
+  }, 0)
+}
+
+console.log(findWeakness(testArray))
