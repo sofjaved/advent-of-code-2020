@@ -41,7 +41,7 @@ let testArray = [35,20,15,25,47,40,62,55,65,95,102,117,150,182,127,219,299,277,3
 
 // console.log(findError(testArray, 5)) // 127
 
-//part 2
+//part 2 is as yet unsolved
 
 function findWeakness(array, target) {
   let left = 0;

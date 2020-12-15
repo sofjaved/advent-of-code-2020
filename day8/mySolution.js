@@ -41,7 +41,7 @@ let testArray = [['nop','+0'],['acc','+1'],['jmp','+4'],['acc','+3'],['jmp','-3'
 console.log(game(testArray)) // 5
 console.log(game(inputArray)) // 1654
 
-//part 2
+//part 2 is as yet unsolved
 
 function swap(array) {
   for(let i = 0; i < array.length; i++) {

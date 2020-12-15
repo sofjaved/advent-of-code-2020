@@ -233,7 +233,7 @@ let input = [
   //part 2
 
   function threeSum2020product(array) {
-    array.sort((a,b)=> a-b);
+    array.sort((a,b) => a-b);
 
     for(let i = 0; i < array.length; i++) {
       let current = array[i];

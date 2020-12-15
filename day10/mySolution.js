@@ -25,4 +25,23 @@ let testArray2 = [28,33,18,42,31,14,46,20,48,47,24,23,49,45,19,38,39,11,1,32,25,
 console.log(testAdapters(testArray1)) // 35
 console.log(testAdapters(testArray2)) // 220
 
+//part 2 is as yet unsolved
 
+console.log(testArray1.sort((a,b)=>a-b))
+
+function arrangements(array) {
+  array.sort((a,b) => a-b);
+  let count = 1;
+  for(let i = 0; i < array.length; i++) {
+    if(array[i+2] && array[i + 2] - array[i] === 2) {
+      count+= ;
+    }
+    if(array[i+3] && array[i + 3] - array[i] === 3) {
+      count++;
+    }
+  }
+  return count;
+}
+
+console.log(arrangements(testArray1));
+console.log(arrangements(testArray2));

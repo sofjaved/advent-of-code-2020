@@ -76,7 +76,7 @@ let testObj = {
 
 console.log(allContainers(testObj, 'shiny gold')) //4
 
-//part 2
+//part 2 is as yet unsolved.
 
 // const countTree = (tree, current) => {
 //   const children = tree[current]
