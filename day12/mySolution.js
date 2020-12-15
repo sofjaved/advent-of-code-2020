@@ -127,3 +127,109 @@ let testArray = ['F10','N3','F7','R90','F11'];
 
 console.log(navigation(testArray)) // 25
 console.log(navigation(inputArray)) // 2270
+
+
+//part 2
+
+// Action N means to move the waypoint north by the given value.
+// Action S means to move the waypoint south by the given value.
+// Action E means to move the waypoint east by the given value.
+// Action W means to move the waypoint west by the given value.
+// Action L means to rotate the waypoint around the ship left (counter-clockwise) the given number of degrees.
+// Action R means to rotate the waypoint around the ship right (clockwise) the given number of degrees.
+// Action F means to move forward to the waypoint a number of times equal to the given value.
+
+function navigation2(array) {
+  let direction = 'E';
+  let position = [0,0]; //positive numbers are east, north; negative numbers are west, south
+  let waypoint = [10,1];
+
+  for(let i=0; i < array.length; i++) {
+    let navDirection = array[i][0];
+    let navAmount = Number(array[i].slice(1));
+
+    if(navDirection === 'N') {
+      waypoint[1] += navAmount;
+    }
+    if(navDirection === 'S') {
+      waypoint[1] -= navAmount;
+    }
+    if(navDirection === 'E') {
+      waypoint[0] += navAmount;
+    }
+    if(navDirection === 'W') {
+      waypoint[0] -= navAmount;
+    }
+    if(navDirection === 'L') {
+      if(navAmount === 90) {
+        waypoint = rotateLeft2(waypoint);
+      }
+      if(navAmount === 180) {
+        waypoint = rotateLeft2(waypoint);
+        waypoint = rotateLeft2(waypoint);
+      }
+      if(navAmount === 270) {
+        waypoint = rotateLeft2(waypoint);
+        waypoint = rotateLeft2(waypoint);
+        waypoint = rotateLeft2(waypoint);
+    }
+  }
+    if(navDirection === 'R') {
+      if(navAmount === 90) {
+        waypoint = rotateRight2(waypoint);
+      }
+      if(navAmount === 180) {
+        waypoint = rotateRight2(waypoint);
+        waypoint = rotateRight2(waypoint);
+      }
+      if(navAmount === 270) {
+        waypoint = rotateRight2(waypoint);
+        waypoint = rotateRight2(waypoint);
+        waypoint = rotateRight2(waypoint);
+    }
+  }
+    if(navDirection === 'F') {
+      for(let i = 1; i <= navAmount; i++) {
+        position[0] += waypoint[0];
+        position[1] += waypoint[1];
+      }
+    }
+}
+return Math.abs(position[0]) + Math.abs(position[1]);
+}
+
+console.log(navigation2(testArray)) // 286
+console.log(navigation2(inputArray)) // 138669
+
+//part 2 helper functions
+
+//rotate waypoint left by 90 degrees:
+
+function rotateLeft2(coords) {
+  if(coords[0] > 0 && coords[1] > 0) { //east, north
+    coords = [-Math.abs(coords[1]), coords[0]]; // east => north, north => west
+  } else if(coords[0] > 0 && coords[1] < 0) { // east, south
+    coords = [Math.abs(coords[1]), coords[0]]; // east => north, south => east
+  } else if(coords[0] < 0 && coords[1] > 0) { // west, north
+    coords = [-Math.abs(coords[1]), coords[0]] // west => south, north => west
+  } else if(coords[0] < 0 && coords[1] < 0) { //west, south
+    coords = [Math.abs(coords[1]), coords[0]]; // west => south, south => east
+  }
+  return coords;
+}
+
+//rotate waypoint right by 90 degrees:
+
+function rotateRight2(coords) {
+  if(coords[0] > 0 && coords[1] > 0) {
+    coords = [coords[1], -Math.abs(coords[0])];
+  } else if(coords[0] > 0 && coords[1] < 0) {
+    coords = [coords[1], -Math.abs(coords[0])];
+  } else if(coords[0] < 0 && coords[1] > 0) {
+    coords = [coords[1], Math.abs(coords[0])]
+  } else if(coords[0] < 0 && coords[1] < 0) {
+    coords = [coords[1], Math.abs(coords[0])];
+  }
+  return coords;
+}
+
