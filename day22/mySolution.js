@@ -5,6 +5,8 @@ let player2 = [1,24,7,44,20,40,42,50,37,21,43,9,12,8,34,13,28,36,25,35,22,2,11,3
 let test1 = [9,2,6,3,1];
 let test2 = [5,8,4,7,10];
 
+//part 1
+
 function winningScore(array1, array2) {
   spaceCards(array1, array2);
   let score = 0;
@@ -43,6 +45,7 @@ function spaceCards(array1, array2) {
   }
 }
 
+//part2
 
 
 
