@@ -19,8 +19,69 @@ function sumInvalids(array, min, max) {
   }
   return sum;
 }
-console.log(sumInvalids(nearbyTickets, 25, 974)) //26869
+// console.log(sumInvalids(nearbyTickets, 25, 974)) //26869
 
-//part 2
+//part 2 is not solved
+
+let invalids = [
+  2,  16,  17,  22,  23,  26,  30,  34,  40,  43,
+ 46,  50,  53,  58,  61,  62,  63,  71,  72,  76,
+ 81,  82,  86,  88,  95,  96, 104, 112, 121, 129,
+145, 148, 156, 157, 160, 168, 170, 177, 186, 198,
+208, 213, 219, 221, 227, 232
+]
+
+
+function removeInvalids(array, indexes) {
+  for(let i = 0; i < indexes.length; i++) {
+    array.splice(array[indexes[i]], 1);
+  }
+  return array;
+}
+
+// console.log(removeInvalids(nearbyTickets, invalids));
+// console.log(nearbyTickets) //190 tickest (invalid tickets removed, ticket numbers are NOT sorted);
+
+let rulesArray = ['departure location: 40-261 or 279-955','departure station: 33-375 or 394-963','departure platform: 39-863 or 877-970','departure track: 30-237 or 256-955','departure date: 47-731 or 741-950','departure time: 38-301 or 317-954','arrival location: 26-598 or 623-969','arrival station: 50-835 or 854-971','arrival platform: 44-535 or 549-958','arrival track: 36-672 or 685-967','class: 34-217 or 236-974','duration: 29-469 or 483-970','price: 45-111 or 120-965','route: 32-751 or 760-954','row: 25-321 or 339-954','seat: 38-423 or 438-958','train: 45-798 or 813-954','type: 40-487 or 503-954','wagon: 46-916 or 938-949','zone: 25-160 or 184-957']
+
+function objectifyRules(array) { //returns and array of objects with keys = rule name, min1, max1, min2, max2
+  let arrObjs = [];
+  for(let i = 0; i < array.length; i++) {
+    let obj = {}
+    let ruleSplit = array[i].split(':');
+    obj.rule = ruleSplit[0];
+    let nums1 = ruleSplit[1].slice(1,7);
+    let nums2 = ruleSplit[1].slice(11);
+    obj.min1 = nums1.slice(0,2);
+    obj.max1 = nums1.slice(3);
+    obj.min2 = nums2.slice(0,3);
+    obj.max2 = nums2.slice(4);
+    arrObjs.push(obj);
+  }
+  return arrObjs;
+ }
+
+ let rules = objectifyRules(rulesArray);
+
+ console.log(rules);
+
+//  function decode(object, array) {
+//    let memo = {};
+//   for(let key in object) {
+//     let rule = object[key];
+//     for(let i = 0; i < array.length; i++) {
+//       let ticket = array[i];
+
+//     }
+//   }
+//  }
+
+// function isValid(obj, ticket) { //input is individual min/max object
+
+// }
+
+//loop through tickets AND rules, keep memo of each rule and indexes of tickets that are valid for that rule
+
+
 
 

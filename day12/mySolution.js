@@ -140,7 +140,6 @@ console.log(navigation(inputArray)) // 2270
 // Action F means to move forward to the waypoint a number of times equal to the given value.
 
 function navigation2(array) {
-  let direction = 'E';
   let position = [0,0]; //positive numbers are east, north; negative numbers are west, south
   let waypoint = [10,1];
 
